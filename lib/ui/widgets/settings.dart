@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ParallelNano_Bobby_Mobile/ui/screens/ip.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/theme/theme.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/theme/theme_notifier.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/notifiers/theme_notifier.dart';
 
 /// A StatefulWidget for a pop-up button.
 ///

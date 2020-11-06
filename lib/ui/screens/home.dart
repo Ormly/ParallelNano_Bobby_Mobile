@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:ParallelNano_Bobby_Mobile/ui/subscreens/nodes.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/subscreens/tempo.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/home_screen/settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/widgets/settings.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

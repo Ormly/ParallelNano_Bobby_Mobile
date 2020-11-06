@@ -1,1 +1,1 @@
-const ip_key = 'ipList';
+const ip_value = 'ipValue';

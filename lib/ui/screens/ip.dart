@@ -1,14 +1,14 @@
+import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/ip_validator.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/screens/home.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/ip_screen/add_ip_button.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/ip_screen/connect_button.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/ip_screen/delete_ip_button.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/ip_screen/ip_list.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 //TODO: the whole thing and comment
 
 class IPScreen extends StatelessWidget {
-  static const buttonPad = 40.0;
+  final _formKey = GlobalKey<FormFieldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -16,34 +16,43 @@ class IPScreen extends StatelessWidget {
       body: Container(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.all(30.0),
+            padding: EdgeInsets.all(40.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                IpList(),
-                SizedBox(height: 15.0),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: buttonPad,
-                    right: buttonPad,
+                TextFormField(
+                  key: _formKey,
+                  initialValue: UserSettings().ipValue,
+                  decoration: InputDecoration(
+                    fillColor: Theme.of(context).textSelectionHandleColor,
+                    filled: true,
+                    border: OutlineInputBorder(borderSide: BorderSide()),
+                    labelText: 'IP',
+                    hintText: '255.255.255.255',
                   ),
-                  child: AddIPButton(),
+                  keyboardType: TextInputType.number,
+                  validator: IPValidator.validateIP,
+                  onSaved: (value) => _saveIPValue(value),
                 ),
                 SizedBox(height: 15.0),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: buttonPad,
-                    right: buttonPad,
+                Container(
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).buttonColor,
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
                   ),
-                  child: DeleteIPButton(),
-                ),
-                SizedBox(height: 15.0),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    left: buttonPad,
-                    right: buttonPad,
+                  width: double.infinity,
+                  child: MaterialButton(
+                    child: Text('Connect'),
+                    onPressed: () {
+                      if (_formKey.currentState.validate()) {
+                        _formKey.currentState.save();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomeScreen()),
+                        );
+                      }
+                    },
                   ),
-                  child: ConnectButton(),
                 ),
               ],
             ),
@@ -52,4 +61,10 @@ class IPScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+_saveIPValue(value) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString(ip_value, value);
+  UserSettings().ipValue = value;
 }

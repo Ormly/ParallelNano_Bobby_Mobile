@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/home_screen/tempo_screen/humidity_indicator.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/home_screen/tempo_screen/temperature_indicator.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/widgets/tempo_screen/humidity_indicator.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/widgets/tempo_screen/temperature_indicator.dart';
 
 class TempoSubscreen extends StatelessWidget {
-  static const buttonPad = 40.0;
+  static const _buttonPad = 40.0;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +35,7 @@ class TempoSubscreen extends StatelessWidget {
             SizedBox(height: 20.0),
             Padding(
               padding:
-                  const EdgeInsets.fromLTRB(buttonPad, 0.0, buttonPad, 0.0),
+                  const EdgeInsets.fromLTRB(_buttonPad, 0.0, _buttonPad, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).buttonColor,
@@ -51,7 +51,7 @@ class TempoSubscreen extends StatelessWidget {
             SizedBox(height: 15.0),
             Padding(
               padding:
-                  const EdgeInsets.fromLTRB(buttonPad, 0.0, buttonPad, 0.0),
+                  const EdgeInsets.fromLTRB(_buttonPad, 0.0, _buttonPad, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).buttonColor,
@@ -67,7 +67,7 @@ class TempoSubscreen extends StatelessWidget {
             SizedBox(height: 15.0),
             Padding(
               padding:
-                  const EdgeInsets.fromLTRB(buttonPad, 0.0, buttonPad, 0.0),
+                  const EdgeInsets.fromLTRB(_buttonPad, 0.0, _buttonPad, 0.0),
               child: Container(
                 decoration: BoxDecoration(
                   color: Theme.of(context).buttonColor,

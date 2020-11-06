@@ -1,3 +1,5 @@
+import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -6,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/screens/home.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/screens/ip.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/theme/theme.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/theme/theme_notifier.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/notifiers/theme_notifier.dart';
 
 /// Main.
 void main() {
@@ -20,10 +22,11 @@ void main() {
   /// Runs the app with the previously saved theme.
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]).then((_) {
     SharedPreferences.getInstance().then((prefs) {
-      var darkModeOn = prefs.getBool('darkMode') ?? true;
+      var _darkModeOn = prefs.getBool('darkMode') ?? true;
+      UserSettings().ipValue = prefs.getString(ip_value) ?? '';
       runApp(
         ChangeNotifierProvider<ThemeNotifier>(
-          create: (_) => ThemeNotifier(darkModeOn ? darkTheme : lightTheme),
+          create: (_) => ThemeNotifier(_darkModeOn ? darkTheme : lightTheme),
           child: MonitoringApp(),
         ),
       );
