@@ -1,6 +1,7 @@
 import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/ip_validator.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/rest/connection_checker.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,10 +47,9 @@ class IPScreen extends StatelessWidget {
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => HomeScreen()),
-                        );
+                        FocusScope.of(context).unfocus(); // Closes the keyboard
+                        ConnectionChecker.checkConnection(
+                            _formKey.currentState.value, context);
                       }
                     },
                   ),
@@ -65,6 +65,6 @@ class IPScreen extends StatelessWidget {
 
 _saveIPValue(value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  await prefs.setString(ip_value, value);
+  await prefs.setString(ip_value_key, value);
   UserSettings().ipValue = value;
 }

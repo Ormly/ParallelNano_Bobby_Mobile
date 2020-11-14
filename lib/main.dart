@@ -1,5 +1,7 @@
 import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/nodes_handler.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/subscreens/nodes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +25,8 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]).then((_) {
     SharedPreferences.getInstance().then((prefs) {
       var _darkModeOn = prefs.getBool('darkMode') ?? true;
-      UserSettings().ipValue = prefs.getString(ip_value) ?? '';
+      UserSettings().ipValue = prefs.getString(ip_value_key) ??
+          ''; //TODO future builder in the right class
       runApp(
         ChangeNotifierProvider<ThemeNotifier>(
           create: (_) => ThemeNotifier(_darkModeOn ? darkTheme : lightTheme),
@@ -42,10 +45,11 @@ class MonitoringApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Parallel Monitor',
       theme: themeNotifier.getTheme(),
-      initialRoute: '/',
+      initialRoute: '/nodes',
       routes: {
         '/': (context) => IPScreen(),
         '/home': (context) => HomeScreen(),
+        '/nodes': (context) => NodesSubscreen(), //remove later
       },
     );
   }
