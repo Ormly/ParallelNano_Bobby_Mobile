@@ -2,11 +2,8 @@ import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/ip_validator.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
 import 'package:ParallelNano_Bobby_Mobile/rest/connection_checker.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-//TODO: the whole thing and comment
 
 class IPScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormFieldState>();

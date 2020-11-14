@@ -28,7 +28,6 @@ class _AnimatedLiquidLinearProgressIndicatorState
   Timer _timer;
   double _currentTemperature;
   double _previousTemperature = 24.0;
-  double _maximumTemperature = 75.0;
 
   @override
   void initState() {
@@ -54,10 +53,10 @@ class _AnimatedLiquidLinearProgressIndicatorState
             builder: (context, sensorData) {
               if (sensorData.hasData) {
                 return LiquidLinearProgressIndicator(
-                  value: sensorData.data / _maximumTemperature,
+                  value: sensorData.data / maximum_temperature,
                   backgroundColor: Colors.grey[10],
                   valueColor: AlwaysStoppedAnimation(
-                      sensorData.data < temperature_threshold
+                      sensorData.data < temperature_color_threshold
                           ? Colors.green[800]
                           : Colors.red),
                   borderRadius: 12.0,
@@ -66,7 +65,7 @@ class _AnimatedLiquidLinearProgressIndicatorState
                   center: Text(
                     "${sensorData.data.toStringAsFixed(0)}°",
                     style: TextStyle(
-                      color: sensorData.data < temperature_threshold
+                      color: sensorData.data < temperature_color_threshold
                           ? Colors.green[300]
                           : Colors.red[200],
                       fontSize: 30.0,
@@ -113,7 +112,7 @@ class _AnimatedLiquidLinearProgressIndicatorState
       (Timer t) {
         _counter++;
         if (_counter == 7) {
-          if (_currentTemperature > _maximumTemperature)
+          if (_currentTemperature > maximum_temperature)
             ErrorHandler.errorHighTemperature();
           setState(() {});
           _counter = 0;

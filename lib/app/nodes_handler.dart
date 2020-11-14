@@ -64,9 +64,6 @@ class NodesHandler {
     if (newElement == null) {
       return;
     }
-    print('\n\nSAVED NODE LIST: ');
-    print(savedNodeList);
-    print('\n\n');
     savedNodeList.forEach((element) {
       var decodedElement = jsonDecode(element);
       if (decodedElement['hostname'] == nodeName) {
@@ -75,10 +72,6 @@ class NodesHandler {
         savedNodeList.insert(elementIndex, jsonEncode(newElement));
       }
     });
-    print('\nInformation: ');
-    print(savedNodeList);
-    print(savedNodeList.runtimeType);
-    print('\n');
     prefs.setStringList(nodes_list_key, savedNodeList);
   }
 
@@ -91,6 +84,13 @@ class NodesHandler {
         savedNodeList.add(jsonEncode(element));
       }
     });
+    prefs.setStringList(nodes_list_key, savedNodeList);
+  }
+
+  static removeNode(int nodeIndex) async {
+    final prefs = await SharedPreferences.getInstance();
+    List<String> savedNodeList = await getSavedNodesList();
+    savedNodeList.removeAt(nodeIndex);
     prefs.setStringList(nodes_list_key, savedNodeList);
   }
 }

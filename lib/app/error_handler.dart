@@ -8,9 +8,6 @@ class ErrorHandler {
   static var _errorIP = '2000';
   static var _errorSensor = '2001';
   static var _errorNodes = '2002';
-  static var _errorConnection = '2005';
-  static var _errorAlreadyRegistered = '2006';
-  static var _errorCurrentSong = '2007';
 
   static void errorIP() {
     Fluttertoast.showToast(
@@ -51,33 +48,6 @@ class ErrorHandler {
   static void errorNodes() {
     Fluttertoast.showToast(
       msg: 'Error ' + _errorNodes + ':\nNodes data cannot be retrieved!',
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIos: 4,
-    );
-  }
-
-  static void errorConnection() {
-    Fluttertoast.showToast(
-      msg: 'Error ' + _errorConnection + ':\nCannot connect to server!',
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIos: 4,
-    );
-  }
-
-  static void errorAlreadyRegistered() {
-    Fluttertoast.showToast(
-      msg: 'Error ' + _errorAlreadyRegistered + ':\nUser already exist!',
-      toastLength: Toast.LENGTH_LONG,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIos: 4,
-    );
-  }
-
-  static void errorCurrentSong() {
-    Fluttertoast.showToast(
-      msg: 'Error ' + _errorCurrentSong + ':\nNo current song playing!',
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.BOTTOM,
       timeInSecForIos: 4,

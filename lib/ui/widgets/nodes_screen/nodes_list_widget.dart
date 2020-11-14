@@ -11,10 +11,7 @@ class NodesListWidget extends StatefulWidget {
   static Future<List<List<String>>> _getNodesInfoList() async {
     await NodesHandler.checkNewNodes();
     List<List<String>> nodesInfoList = new List(2);
-
-    print('hola');
     nodesInfoList[0] = await NodesHandler.getSavedNodesNameList();
-    print('chao');
     nodesInfoList[1] = await NodesHandler.getNodesStatusList();
     return nodesInfoList;
   }
@@ -64,7 +61,6 @@ class _NodesListWidgetState extends State<NodesListWidget> {
                       ),
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {
-                        print(nodesInfoList.data[0][index]);
                         NodesHandler.updateNodeInformation(
                             nodesInfoList.data[0][index]);
                         showDialog(
@@ -97,10 +93,8 @@ class _NodesListWidgetState extends State<NodesListWidget> {
       Duration(seconds: 1),
       (Timer t) {
         _counter++;
-        if (_counter == 5) {
-          setState(() {
-            //NodesHandler.saveNodesList();
-          });
+        if (_counter == 1) {
+          setState(() {});
           _counter = 0;
         }
       },

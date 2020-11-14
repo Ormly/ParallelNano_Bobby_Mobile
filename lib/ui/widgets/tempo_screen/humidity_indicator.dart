@@ -28,7 +28,6 @@ class _AnimatedLiquidCircularProgressIndicatorState
   Timer _timer;
   double _currentHumidity;
   double _previousHumidity = 50.0;
-  double _maximumHumidity = 90.0;
 
   @override
   void initState() {
@@ -58,13 +57,13 @@ class _AnimatedLiquidCircularProgressIndicatorState
                   borderColor: Colors.grey,
                   borderWidth: 2.0,
                   valueColor: AlwaysStoppedAnimation(
-                      sensorData.data < humidity_threshold
+                      sensorData.data < humidity_color_threshold
                           ? Colors.blue
                           : Colors.indigo[700]),
                   center: Text(
                     '${sensorData.data.toStringAsFixed(0)}%',
                     style: TextStyle(
-                      color: sensorData.data < humidity_threshold
+                      color: sensorData.data < humidity_color_threshold
                           ? Colors.lightBlueAccent
                           : Colors.indigo[300],
                       fontSize: 30.0,
@@ -110,7 +109,7 @@ class _AnimatedLiquidCircularProgressIndicatorState
       (Timer t) {
         _counter++;
         if (_counter == 11) {
-          if (_currentHumidity > _maximumHumidity)
+          if (_currentHumidity + humidity_accuracy_fix > maximum_humidity)
             ErrorHandler.errorHighHumidity();
           setState(() {});
           _counter = 0;

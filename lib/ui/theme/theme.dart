@@ -1,22 +1,16 @@
 import 'package:flutter/material.dart';
 
-//TODO remove commented out code once finished
-
 /// [darkTheme].
 final darkTheme = ThemeData(
   primarySwatch: Colors.grey,
   primaryColor: Color(0xFF121212),
   brightness: Brightness.dark,
   backgroundColor: Color(0xFF212121),
-  //accentColor: Color(0xFF448E7A),
   accentIconTheme: IconThemeData(color: Colors.black),
   dividerColor: Colors.black12,
   textSelectionHandleColor: Colors.grey[700],
-  //textSelectionColor: Color(0xFF448E7A),
-  //cursorColor: Color(0xFF448E7A),
   indicatorColor: Colors.grey,
   buttonColor: Color(0xFF212121),
-  //errorColor: Color(0xFF448E7A),
   splashColor: Colors.white54,
   iconTheme: IconThemeData(color: Colors.grey),
   textTheme: TextTheme(
@@ -24,7 +18,6 @@ final darkTheme = ThemeData(
       fontFamily: 'Open_Sans',
       fontWeight: FontWeight.bold,
       fontSize: 14.0,
-      //color: Color(0xFF448E7A),
     ),
     subtitle: TextStyle(
       fontFamily: 'Open_Sans',
@@ -70,14 +63,10 @@ final lightTheme = ThemeData(
   primaryColor: Color(0xFF2C59A5),
   brightness: Brightness.light,
   backgroundColor: Color(0xFFE5E5E5),
-  //accentColor: Color(0xFF448E7A),
   accentIconTheme: IconThemeData(color: Colors.white),
   dividerColor: Colors.white54,
   textSelectionHandleColor: Colors.grey[200],
-  //textSelectionColor: Color(0xFF448E7A),
-  //cursorColor: Color(0xFF448E7A),
   indicatorColor: Colors.white70,
-  //errorColor: Color(0xFF448E7A),
   splashColor: Colors.black12,
   iconTheme: IconThemeData(color: Color(0xFF2C59A5)),
   textTheme: TextTheme(
@@ -85,7 +74,6 @@ final lightTheme = ThemeData(
       fontFamily: 'Open_Sans',
       fontWeight: FontWeight.bold,
       fontSize: 14.0,
-      //color: Color(0xFF448E7A),
     ),
     subtitle: TextStyle(
       fontFamily: 'Open_Sans',

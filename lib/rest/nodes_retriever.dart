@@ -14,10 +14,7 @@ class NodesRetriever {
   static Future<List<dynamic>> getAvailableNodes() async {
     try {
       var response = await http.get(
-        //TODO replace ip with commented
-        Uri.encodeFull('http://' +
-            '192.168.31.201' /*UserSettings().ipValue*/ +
-            nodes_url),
+        Uri.encodeFull('http://' + UserSettings().ipValue + nodes_url),
       );
       return jsonDecode(response.body)['/nodes_status'];
     } catch (errorNodes) {

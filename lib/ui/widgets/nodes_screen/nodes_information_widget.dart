@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:ParallelNano_Bobby_Mobile/app/nodes_handler.dart';
-import 'package:ParallelNano_Bobby_Mobile/rest/nodes_retriever.dart';
 import 'package:flutter/material.dart';
 
 class NodesInformationWidget extends StatelessWidget {
@@ -24,29 +23,15 @@ class NodesInformationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: //NodesRetriever.getAvailableNodes(),
-          NodesHandler.getSavedNodesList(),
-      //TODO: crear funcion que actualice los valores.
+      future: NodesHandler.getSavedNodesList(),
       builder: (context, nodesInformation) {
         if (nodesInformation.hasData) {
           return AlertDialog(
-            title: // Text('hola'),
-                Text(
-                    '${jsonDecode(nodesInformation.data[nodeIndex])['hostname']}'),
+            title: Text(
+                '${jsonDecode(nodesInformation.data[nodeIndex])['hostname']}'),
             content: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                /* SliverPadding(
-                  padding: EdgeInsets.all(1.0),
-                  sliver: SliverList(
-                    delegate: SliverChildBuilderDelegate((context, index) {
-                      return ListTile(
-                        title:
-                            Text('${nodesInformation.data[nodeIndex][index]}'),
-                      );
-                    }),
-                  ),
-                ), */
-
                 Container(
                   height: 300,
                   width: 300,
@@ -55,19 +40,37 @@ class NodesInformationWidget extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return ListTile(
                         title: Text(nodeAttributesToDisplay[index]),
-                        subtitle: //Text('hola')
-                            Text(
-                                '${jsonDecode(nodesInformation.data[nodeIndex])[nodeAttributes[index]]}'),
+                        subtitle: Text(
+                            '${jsonDecode(nodesInformation.data[nodeIndex])[nodeAttributes[index]]}'),
                       );
                     },
                   ),
                 ),
-                TextButton(
-                  onPressed: () => print(jsonDecode(nodesInformation.data[1])[
-                      nodeAttributes[
-                          0]]), //null, //() => Navigator.pop(context),
-                  //print(nodesInformation.data[nodeIndex].runtimeType),
-                  child: Text('Boton'),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).buttonColor,
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
+                  child: MaterialButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text('Close'),
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).buttonColor,
+                    borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                  ),
+                  child: MaterialButton(
+                    onPressed: () => {
+                      NodesHandler.removeNode(nodeIndex),
+                      Navigator.pop(context),
+                    },
+                    child: Text('Remove Node'),
+                  ),
                 ),
               ],
             ),
