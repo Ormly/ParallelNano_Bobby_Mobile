@@ -6,11 +6,17 @@ import 'package:flutter/material.dart';
 
 class NodesInformationWidget extends StatelessWidget {
   final int nodeIndex;
-  final List<String> nodeAttributes = ['cpu_usage', 'gpu', 'timestamp'];
+  final List<String> nodeAttributes = [
+    'gpu',
+    'cpu_usage',
+    'mem_usage',
+    'ip_address'
+  ];
   final List<String> nodeAttributesToDisplay = [
-    'CPU Usage: ',
     'GPU Usage: ',
-    'TimeStamp: '
+    'CPU Usage: ',
+    'Memory Usage: ',
+    'IP Address: '
   ];
 
   NodesInformationWidget(this.nodeIndex);
