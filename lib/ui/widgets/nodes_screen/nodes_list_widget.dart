@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:ParallelNano_Bobby_Mobile/app/nodes_handler.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/widgets/nodes_screen/nodes_information_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -47,22 +48,27 @@ class _NodesListWidgetState extends State<NodesListWidget> {
                   return Card(
                     color: Colors.white10,
                     child: ListTile(
-                      leading: nodesInfoList.data[1][index] == 'on'
+                      leading: UserSettings().mockNodesInfoList[1][index] ==
+                              'on' /* nodesInfoList.data[1][index] == 'on' */
                           ? Icon(Icons.link)
                           : Icon(Icons.link_off),
-                      title: Text("${nodesInfoList.data[0][index]}"),
+                      title: Text(
+                          "${UserSettings().mockNodesInfoList[0][index]}" /* "${nodesInfoList.data[0][index]}" */),
                       subtitle: Text(
-                        "${nodesInfoList.data[1][index]}",
+                        "${UserSettings().mockNodesInfoList[1][index]}"
+                        /* "${nodesInfoList.data[1][index]}" */,
                         style: DefaultTextStyle.of(context).style.apply(
-                              color: nodesInfoList.data[1][index] == 'on'
+                              color: UserSettings().mockNodesInfoList[1]
+                                          [index] ==
+                                      'on' /* nodesInfoList.data[1][index] == 'on' */
                                   ? Colors.green
                                   : Colors.red,
                             ),
                       ),
                       trailing: Icon(Icons.arrow_forward_ios),
                       onTap: () {
-                        NodesHandler.updateNodeInformation(
-                            nodesInfoList.data[0][index]);
+                        /*NodesHandler.updateNodeInformation(
+                            nodesInfoList.data[0][index]);*/
                         showDialog(
                           context: context,
                           builder: (BuildContext context) =>
@@ -72,7 +78,9 @@ class _NodesListWidgetState extends State<NodesListWidget> {
                     ),
                   );
                 },
-                childCount: nodesInfoList.data[0].length,
+                childCount: UserSettings()
+                    .mockNodesInfoList[0]
+                    .length /* nodesInfoList.data[0].length */,
               ),
             ),
           );
