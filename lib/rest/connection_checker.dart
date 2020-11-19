@@ -5,10 +5,10 @@ import 'package:ParallelNano_Bobby_Mobile/app/error_handler.dart';
 
 /// A class to check if we can connect to the given IP.
 ///
-/// It connects to the Rest API through [http.get] to get the queue,
-/// this is used to check if we get an answer from this ip, therefore
-/// checking if the ip is a valid Jukebox ip or not. If it is valid
-/// it navigates to the login screen, if not displays an error toast.
+/// It tries connects to the Rest API through [http.get],
+/// this is used to check if we get an answer from this ip,
+/// therefore checking if the ip is valid or not. If it is valid
+/// it navigates to the home screen, if not displays an error toast.
 class ConnectionChecker {
   static Future<void> checkConnection(
       String userIP, BuildContext context) async {

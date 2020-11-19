@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:ParallelNano_Bobby_Mobile/ui/subscreens/nodes.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/subscreens/tempo.dart';
-import 'package:ParallelNano_Bobby_Mobile/ui/widgets/settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/ui/widgets/pop_up_settings.dart';
 
+/// A stateless screen that contains the main widgets to be display.
+///
+/// It builds a [TabController] in which the temperature screen and the
+/// nodes screen can be selected to be diplay.
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -43,7 +47,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         floatingActionButton: Container(
-          child: Settings(),
+          child: PopUpSettings(),
         ),
       ),
     );

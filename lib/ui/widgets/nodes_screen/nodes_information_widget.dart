@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:ParallelNano_Bobby_Mobile/app/nodes_handler.dart';
 import 'package:flutter/material.dart';
 
+/// A stateless widget that renders the node details.
 class NodesInformationWidget extends StatelessWidget {
   final int nodeIndex;
   final List<String> nodeAttributes = [

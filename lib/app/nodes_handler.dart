@@ -4,11 +4,7 @@ import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
 import 'package:ParallelNano_Bobby_Mobile/rest/nodes_retriever.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-/// A retriever that gets the queue from the server.
-///
-/// It sends http get requests and receives back the queue,
-/// the current song or the current time depending on the
-/// method that is called.
+/// A handler for the list of nodes.
 class NodesHandler {
   static Future<List<String>> getOfflineNodesList() async {
     final prefs = await SharedPreferences.getInstance();

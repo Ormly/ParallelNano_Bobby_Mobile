@@ -4,6 +4,7 @@ import 'package:ParallelNano_Bobby_Mobile/app/nodes_handler.dart';
 import 'package:ParallelNano_Bobby_Mobile/ui/widgets/nodes_screen/nodes_information_widget.dart';
 import 'package:flutter/material.dart';
 
+/// A stateful widget that renders the node list.
 class NodesListWidget extends StatefulWidget {
   @override
   _NodesListWidgetState createState() => _NodesListWidgetState();

@@ -1,5 +1,5 @@
 import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
-import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/ip_settings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -23,7 +23,7 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.bottom]).then((_) {
     SharedPreferences.getInstance().then((prefs) {
       var _darkModeOn = prefs.getBool('darkMode') ?? true;
-      UserSettings().ipValue = prefs.getString(ip_value_key) ?? '';
+      IPSettings().ipValue = prefs.getString(ip_value_key) ?? '';
       runApp(
         ChangeNotifierProvider<ThemeNotifier>(
           create: (_) => ThemeNotifier(_darkModeOn ? darkTheme : lightTheme),

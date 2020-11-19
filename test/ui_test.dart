@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  // A test case for testing the IP screen
+  /// A test case for testing the IP screen
   testWidgets('test IP Screen', (WidgetTester tester) async {
     Widget testWidget = new MediaQuery(
         data: new MediaQueryData(),
@@ -37,7 +37,7 @@ void main() {
     expect(find.byType(MaterialButton), findsOneWidget);
   });
 
-  // A test case for testing the tempo screen
+  /// A test case for testing the tempo screen
   testWidgets('test tempo Screen', (WidgetTester tester) async {
     Widget testWidget = new MediaQuery(
         data: new MediaQueryData(),
@@ -50,7 +50,7 @@ void main() {
     expect(find.text('Humidity'), findsOneWidget);
   });
 
-  // A test case for testing the nodes screen
+  /// A test case for testing the nodes screen
   testWidgets('test nodes Screen', (WidgetTester tester) async {
     Widget testWidget = new MediaQuery(
         data: new MediaQueryData(),

@@ -6,8 +6,9 @@ import 'package:ParallelNano_Bobby_Mobile/rest/sensor_data_retriever.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 
-//Based on https://pub.dev/packages/liquid_progress_indicator/example
+// Based on https://pub.dev/packages/liquid_progress_indicator/example
 
+/// A stateless widget that renders the temperature value.
 class TemperatureIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

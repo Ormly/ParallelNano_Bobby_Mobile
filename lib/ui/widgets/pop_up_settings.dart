@@ -8,15 +8,15 @@ import 'package:ParallelNano_Bobby_Mobile/app/notifiers/theme_notifier.dart';
 
 /// A StatefulWidget for a pop-up button.
 ///
-/// It renders a pop-up button that opens the app's settings when pressed.
+/// It renders a pop-up button that opens the app settings when pressed.
 /// It contains three options, the selection of the Light Theme, Dark Theme and
 /// the change IP button that sends the user to the IP screen.
-class Settings extends StatefulWidget {
+class PopUpSettings extends StatefulWidget {
   @override
   _AddState createState() => _AddState();
 }
 
-class _AddState extends State<Settings> {
+class _AddState extends State<PopUpSettings> {
   var _darkTheme = false;
 
   static const String FirstItem = 'Light';
@@ -50,7 +50,6 @@ class _AddState extends State<Settings> {
     );
   }
 
-  /// Decides what to do depending on the pressed choice.
   void choiceAction(String choice) {
     final themeNotifier = Provider.of<ThemeNotifier>(context);
     if (choice == FirstItem) {
@@ -67,7 +66,6 @@ class _AddState extends State<Settings> {
     }
   }
 
-  /// Calls the notifier to select the theme.
   void onThemeChanged(bool value, ThemeNotifier themeNotifier) async {
     (value)
         ? themeNotifier.setTheme(darkTheme)

@@ -1,10 +1,11 @@
 import 'package:ParallelNano_Bobby_Mobile/app/constants.dart';
 import 'package:ParallelNano_Bobby_Mobile/app/ip_validator.dart';
-import 'package:ParallelNano_Bobby_Mobile/app/user_settings.dart';
+import 'package:ParallelNano_Bobby_Mobile/app/ip_settings.dart';
 import 'package:ParallelNano_Bobby_Mobile/rest/connection_checker.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// A stateless screen to input the IP of the server.
 class IPScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormFieldState>();
 
@@ -20,7 +21,7 @@ class IPScreen extends StatelessWidget {
               children: <Widget>[
                 TextFormField(
                   key: _formKey,
-                  initialValue: UserSettings().ipValue,
+                  initialValue: IPSettings().ipValue,
                   decoration: InputDecoration(
                     fillColor: Theme.of(context).textSelectionHandleColor,
                     filled: true,
@@ -63,5 +64,5 @@ class IPScreen extends StatelessWidget {
 _saveIPValue(value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString(ip_value_key, value);
-  UserSettings().ipValue = value;
+  IPSettings().ipValue = value;
 }

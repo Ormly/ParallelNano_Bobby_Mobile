@@ -1,3 +1,5 @@
+/// Constants file
+
 const String ip_value_key = 'ipValueKey';
 const String nodes_list_key = 'nodesListKey';
 const double wrong_sensor_value = -100.0;
